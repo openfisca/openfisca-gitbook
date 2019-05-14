@@ -383,3 +383,104 @@ div.sphinxsidebar input {
   color: #fff;
 }
 
+
+/* add feedback */
+
+/* Setup */
+
+#modal {
+  text-align: center;
+  padding: 1em 0;
+  border-radius: 3px;
+  position: relative;
+  border-top: 1px solid #606060
+}
+img.bouncy {
+  cursor: pointer;
+  margin: 0 1em;
+  width: 3em;
+}
+
+textarea {
+  width: 80%;
+  max-width: 80%;
+  border: 2px solid rgba(0,0,0,0.1);
+  border-radius: 5px;
+  padding: 1em;
+  font-size: 14px;
+  margin-top: 1em;
+}
+
+/* End Setup */
+/* Everything below should be considered */
+
+img.bouncy {
+  position: relative;
+  transform: scale3d(0.8,0.8,1);
+  transition: transform 0.2s ease-out;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+img.sibling-hover:not(.selected),
+img.sibling-selected {
+  opacity: 0.25;
+  transform: scale3d(0.7,0.7,1);
+}
+
+img:hover {
+  opacity: 1;
+  animation: pop 0.2s forwards;
+}
+
+img.selected,
+img.selected:hover {
+  transform: scale3d(0.9,0.9,0.9);
+  top: 2px;
+  transition: all 0.05s ease-out;
+  animation: none;
+}
+
+textarea {
+  height: 0;
+  opacity: 0;
+  transition: height 0.1s ease-in, opacity 0.1s ease-in;
+}
+
+textarea.visible {
+  height: 8em;
+  opacity: 1;
+  transition: height 0.25s ease-out;
+  opacity: 0.1s ease-out;
+}
+
+@keyframes unpop {
+  from {
+    transform: scale3d(1,1,1); 
+  }
+  to {
+    transform: scale3d(0.8,0.8,1); 
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale3d(0.8,0.8,1);
+  }
+
+  60% {
+    transform: scale3d(1.07, 1.07, 1);
+  }
+
+  80% {
+    transform: scale3d(1.02, 1.02, 1);
+  }
+
+  90% {
+    transform: scale3d(0.98, 0.98, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}

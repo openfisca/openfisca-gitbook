@@ -39,3 +39,28 @@ $(document).ready(function() {
   // Activate action button tooltip
   $('.actionbutton').tooltip()
 });
+
+
+
+// try to add feedback js
+
+$('body').on('click', 'img', function(){
+  if ($(this).hasClass('selected')) {
+    $('img').removeClass('selected sibling-selected');
+    $(this).siblings('textarea').removeClass('visible')
+  } else {
+    $('img').removeClass('selected sibling-selected');
+    $(this).addClass('selected');
+    $(this).siblings('img').addClass('sibling-selected');    
+    $(this).siblings('textarea').addClass('visible')
+  }
+})
+
+$('body').on('mouseover', 'img', function(){
+  $(this).siblings('img').addClass('sibling-hover');
+})
+
+$('body').on('mouseout', 'img', function(){
+  $(this).siblings('img').removeClass('sibling-hover');
+})
+
