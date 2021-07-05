@@ -1,6 +1,6 @@
 # Tests
 
-OpenFisca has three sorts of tests:
+OpenFisca has two sorts of tests:
 
 * unit tests
 * test-case tests
