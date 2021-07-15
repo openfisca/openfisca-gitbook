@@ -154,6 +154,84 @@ The scales built-in OpenFisca are:
 
 Example: [the french tax scale on income](https://fr.openfisca.org/legislation/impot_revenu.bareme)
 
+#### Ending a parameter at a specific date
+
+It is possible to end a parameter at a specific date simply by entering **null** as a value for that date.
+
+In the following example, the `housing allowance` is only defined from the 1st of January 2010 to the 30th of November 2016:
+
+File `parameters/benefits/housing_allowance.yaml`
+
+```yaml
+description: Housing allowance amount (as a fraction of the rent)
+metadata:
+  unit: /1
+  reference: https://law.gov.example/housing-allowance-rate
+documentation: |
+  A fraction of the rent.
+  From the 1st of Dec 2016, the housing allowance no longer exists.
+values:
+  # This parameter is only defined from the 1st of Jan 2010 to the 30th of Nov 2016.
+  2010-01-01:
+    value: 0.25
+  2016-12-01:
+    value: null
+```
+
+Calling the parameter for a period after the 30th of November 2016, **2017** for instance, will render an error:
+
+> Example:
+>```py 
+>tax_benefit_system.parameters(2017).benefits.housing_allowance
+>```
+> Output:
+>```py
+>ParameterNotFoundError: The parameter 'benefits[housing_allowance]' was not found in the 2017-01-01 tax and benefit system.
+>```
+
+
+The same thing can be done for a scale by adding a **null** value for that date across all rates.
+
+The following example from `openfisca-france`, ends the `Sécurité sociale/ Maladie, maternité` parameter in the 31st of December 2012.
+
+File `parameters/cotsoc/sal/comind/maladie.yaml`
+
+```yaml
+brackets:
+- rate:
+    2003-01-01:
+      value: 0.065
+    2012-01-01:
+      value: 0.06
+    2013-01-01:
+      value: null
+  threshold:
+    2003-01-01:
+      value: 0.0
+- rate:
+    2003-01-01:
+      value: 0.059
+    2013-01-01:
+      value: null
+  threshold:
+    2003-01-01:
+      value: 1.0
+    2013-01-01:
+      value: null
+- rate:
+    2003-01-01:
+      value: 0.0
+    2013-01-01:
+      value: null
+  threshold:
+    2003-01-01:
+      value: 5.0
+    2013-01-01:
+      value: null
+description: Sécurité sociale/ Maladie, maternité
+```
+
+
 #### Computing a parameter that depends on a variable (fancy indexing)
 
 Sometimes, the value of a parameter depends on a variable (e.g. a housing benefit that depends on the zone the house is built on).
