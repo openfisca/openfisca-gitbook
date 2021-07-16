@@ -158,7 +158,7 @@ Example: [the french tax scale on income](https://fr.openfisca.org/legislation/i
 
 It is possible to end a parameter at a specific date simply by entering **null** as a value for that date.
 
-In the following example, the `housing allowance` is only defined from the 1st of January 2010 to the 30th of November 2016:
+In the following example, the `housing_allowance` is only defined from the 1st of January 2010 to the 30th of November 2016:
 
 File `parameters/benefits/housing_allowance.yaml`
 
