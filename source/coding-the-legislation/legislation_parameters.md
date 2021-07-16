@@ -194,7 +194,6 @@ The same thing can be done for a scale by adding a **null** value for that date 
 
 The following example from `openfisca-france`, ends the `Sécurité sociale/ Maladie, maternité` parameter in the 31st of December 2012.
 
-File `parameters/cotsoc/sal/comind/maladie.yaml`
 
 ```yaml
 brackets:
