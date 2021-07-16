@@ -127,9 +127,9 @@ Note that if `flat_tax_on_salary` is calculated **before** `2005-05-31` (include
 
 ## Ending a variable at a specific date
 
-As the legislation evolves, some fiscal or benefit mechanisms disapear.
+As the legislation evolves, some fiscal or benefit mechanisms disappear.
 
-Let's for instance assume that a `progressive_income_tax` used to exist before the `flat_tax_on_salary` was introduced. This progressive tax then disapeared on the 1st of June 2005.
+Let's for instance assume that a `progressive_income_tax` used to exist before the `flat_tax_on_salary` was introduced. This progressive tax then disappeared on the 1st of June 2005.
 
 This is implemented with an `end` attribute that define the _last day_ a variable can be calculated:
 
@@ -158,11 +158,11 @@ Note that:
 
 ## Ending a parameter at a specific date
 
-It is possible to end a parameter at a specific date simply by entering **null** as a value for that date.
+Similarly to variables, parameters are prone to disappear as the legislation evolves.
 
-In the following example, the `housing_allowance` is only defined from the 1st of January 2010 to the 30th of November 2016:
+For instance, let's assume that the `housing_allowance` is only defined from the 1st of January 2010 to the 30th of November 2016.
 
-File `parameters/benefits/housing_allowance.yaml`
+We can end `housing_allowance` at a specific date by simply entering **null** as a value for that date (`2016-12-01` in this case).
 
 ```yaml
 description: Housing allowance amount (as a fraction of the rent)
@@ -192,42 +192,62 @@ Calling the parameter for a period starting from the 1st of December 2016, **201
 >```
 
 
-The same thing can be done for a scale by adding a **null** value for that date across all rates.
+The same thing can be done for a scale by adding a **null** value for the end date across all rates.
 
-The following example from `openfisca-france`, ends the `Sécurité sociale/ Maladie, maternité` parameter in the 31st of December 2012.
-
+The following example of `social_security_contribution` ends as of the 1st of January 2017.
 
 ```yaml
+description: Social security contribution tax scale
+metadata:
+  threshold_unit: currency-EUR
+  rate_unit: /1
 brackets:
 - rate:
-    2003-01-01:
-      value: 0.065
-    2012-01-01:
-      value: 0.06
     2013-01-01:
+      value: 0.03
+    2017-01-01:
       value: null
   threshold:
-    2003-01-01:
+    2013-01-01:
       value: 0.0
-- rate:
-    2003-01-01:
-      value: 0.059
-    2013-01-01:
-      value: null
-  threshold:
-    2003-01-01:
-      value: 1.0
-    2013-01-01:
+    2017-01-01:
       value: null
 - rate:
-    2003-01-01:
-      value: 0.0
     2013-01-01:
+      value: 0.1
+    2017-01-01:
       value: null
   threshold:
-    2003-01-01:
-      value: 5.0
     2013-01-01:
+      value: 12000.0
+    2017-01-01:
       value: null
-description: Sécurité sociale/ Maladie, maternité
 ```
+It is also possible to only end one bracket. We use the same `social_security_contribution` example to illustrate, by ending only the second bracket as of the 1st of January 2017.
+
+```yaml
+description: Social security contribution tax scale
+metadata:
+  threshold_unit: currency-EUR
+  rate_unit: /1
+brackets:
+- rate: # 1st bracket
+    2013-01-01:
+      value: 0.03
+    2017-01-01:
+      value: 0.04
+  threshold:
+    2013-01-01:
+      value: 0.0
+- rate: # 2nd bracket
+    2013-01-01:
+      value: 0.1
+    2017-01-01:
+      value: null
+  threshold:
+    2013-01-01:
+      value: 12000.0
+    2017-01-01:
+      value: null
+```
+
