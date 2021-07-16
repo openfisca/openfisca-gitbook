@@ -83,7 +83,7 @@ YAML parameter files should not be name `index.yaml`.
 
 A node can be defined with a YAML file instead of a directory. In such a case, the name of the file defines the name of the node. Such a file can define children nodes (which can define grandchildren...).
 
-Sample `parameters/tax_on_salary.yaml`:
+Sample file `parameters/tax_on_salary.yaml`:
 
 ```yaml
 description: Tax on salaries
@@ -105,7 +105,7 @@ Scales are complex parameters constituted of brackets. They offer convenient bui
 
 For instance, a marginal rate test scale can be defined in a YAML file with:
 
-File `parameters/tax_on_salary/tax_scale.yaml`
+Sample file `parameters/tax_on_salary/tax_scale.yaml`
 ```yaml
 description: Scale for tax on salaries
 brackets:
@@ -154,6 +154,7 @@ The scales built-in OpenFisca are:
 
 Example: [the french tax scale on income](https://fr.openfisca.org/legislation/impot_revenu.bareme)
 
+
 #### Computing a parameter that depends on a variable (fancy indexing)
 
 Sometimes, the value of a parameter depends on a variable (e.g. a housing benefit that depends on the zone the house is built on).
@@ -163,7 +164,7 @@ To be more specific, let's assume that:
   - The amount of this benefit depends on which `zone` the household lives in. The `zone` can take only three values: `zone_1`, `zone_2` or `zone_3`.
   - The amount also depends on the composition of the household.
 
-The parameters of this benefit can be defined in a `housing_benefit.yaml` file:
+The parameters of this benefit can be defined in a `housing_benefit.yaml` sample file:
 
 ```YAML
 zone_1:
