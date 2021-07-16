@@ -125,7 +125,7 @@ Only a few characters changed in comparison with the last example: the suffix `_
 Note that if `flat_tax_on_salary` is calculated **before** `2005-05-31` (included), _none_ of the two formulas is used, as they are _both inactive_ at this time. Instead, **the variable [default value](../key-concepts/variables.md#default-values) is returned**.
 
 
-## Variable end
+## Ending a variable at a specific date
 
 As the legislation evolves, some fiscal or benefit mechanisms disapear.
 
