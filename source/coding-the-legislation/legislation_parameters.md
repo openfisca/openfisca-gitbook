@@ -178,7 +178,7 @@ values:
     value: null
 ```
 
-Calling the parameter for a period after the 30th of November 2016, **2017** for instance, will render an error:
+Calling the parameter for a period starting from the 1st of December 2016, **2017** for instance, will render an error:
 
 > Example:
 >```py 
