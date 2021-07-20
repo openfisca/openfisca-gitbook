@@ -95,18 +95,18 @@ The time period must respect the [definition period](../coding-the-legislation/3
         "Janet"
       ],
       "housing_occupancy_status": {
-        "2016-01": "Tenant",
-        "2016-02": "Tenant",
-        "2016-03": "Owner",
-        "2016-04": "Owner",
-        "2016-05": "Owner",
-        "2016-06": "Owner",
-        "2016-07": "Owner",
-        "2016-08": "Owner",
-        "2016-09": "Owner",
-        "2016-10": "Owner",
-        "2016-11": "Owner",
-        "2016-12": "Owner"
+        "2016-01": "tenant",
+        "2016-02": "tenant",
+        "2016-03": "owner",
+        "2016-04": "owner",
+        "2016-05": "owner",
+        "2016-06": "owner",
+        "2016-07": "owner",
+        "2016-08": "owner",
+        "2016-09": "owner",
+        "2016-10": "owner",
+        "2016-11": "owner",
+        "2016-12": "owner"
       },
       "accommodation_size": {
         "2016-01": 57,
@@ -177,20 +177,20 @@ To indicate you want a variable computed, insert the variable in the correspondi
         "Janet"
       ],
       "housing_occupancy_status": {
-        "2016-01": "Tenant",
-        "2016-02": "Tenant",
-        "2016-03": "Owner",
-        "2016-04": "Owner",
-        "2016-05": "Owner",
-        "2016-06": "Owner",
-        "2016-07": "Owner",
-        "2016-08": "Owner",
-        "2016-09": "Owner",
-        "2016-10": "Owner",
-        "2016-11": "Owner",
-        "2016-12": "Owner"
+        "2016-01": "tenant",
+        "2016-02": "tenant",
+        "2016-03": "owner",
+        "2016-04": "owner",
+        "2016-05": "owner",
+        "2016-06": "owner",
+        "2016-07": "owner",
+        "2016-08": "owner",
+        "2016-09": "owner",
+        "2016-10": "owner",
+        "2016-11": "owner",
+        "2016-12": "owner"
       },
-      "accomodation_size": {
+      "accommodation_size": {
         "2016-01": 57,
         "2016-02": 57,
         "2016-03": 57,
@@ -217,61 +217,8 @@ To indicate you want a variable computed, insert the variable in the correspondi
 The API will return an identical JSON file where all the `null` (the variable that you asked OpenFisca to compute, see above for details) have been replace by the computed value.
 ```json
 {
-  "households": {
-    "household_1": {
-      "parents": [
-        "Ricarda",
-        "Bob"
-      ]
-    },
-    "household_2": {
-      "accomodation_size": {
-        "2016-01": 57,
-        "2016-02": 57,
-        "2016-03": 57,
-        "2016-04": 57,
-        "2016-05": 57,
-        "2016-06": 57,
-        "2016-07": 57,
-        "2016-08": 57,
-        "2016-09": 57,
-        "2016-10": 57,
-        "2016-11": 57,
-        "2016-12": 57
-      },
-      "children": [
-        "Janet"
-      ],
-      "housing_occupancy_status": {
-        "2016-01": "Tenant",
-        "2016-02": "Tenant",
-        "2016-03": "Owner",
-        "2016-04": "Owner",
-        "2016-05": "Owner",
-        "2016-06": "Owner",
-        "2016-07": "Owner",
-        "2016-08": "Owner",
-        "2016-09": "Owner",
-        "2016-10": "Owner",
-        "2016-11": "Owner",
-        "2016-12": "Owner"
-      },
-      "housing_tax": {
-        "2016": 570.0
-      },
-      "parents": [
-        "Bill"
-      ]
-    }
-  },
   "persons": {
-    "Bill": {},
-    "Bob": {},
-    "Janet": {},
     "Ricarda": {
-      "income_tax": {
-        "2016-06": 525.0
-      },
       "salary": {
         "2016-01": 3500,
         "2016-02": 3500,
@@ -285,6 +232,59 @@ The API will return an identical JSON file where all the `null` (the variable th
         "2016-10": 4000,
         "2016-11": 4000,
         "2016-12": 4000
+      },
+      "income_tax": {
+        "2016-06": 525
+      }
+    },
+    "Bob": {},
+    "Bill": {},
+    "Janet": {}
+  },
+  "households": {
+    "household_1": {
+      "parents": [
+        "Ricarda",
+        "Bob"
+      ]
+    },
+    "household_2": {
+      "parents": [
+        "Bill"
+      ],
+      "children": [
+        "Janet"
+      ],
+      "housing_occupancy_status": {
+        "2016-01": "tenant",
+        "2016-02": "tenant",
+        "2016-03": "owner",
+        "2016-04": "owner",
+        "2016-05": "owner",
+        "2016-06": "owner",
+        "2016-07": "owner",
+        "2016-08": "owner",
+        "2016-09": "owner",
+        "2016-10": "owner",
+        "2016-11": "owner",
+        "2016-12": "owner"
+      },
+      "accommodation_size": {
+        "2016-01": 57,
+        "2016-02": 57,
+        "2016-03": 57,
+        "2016-04": 57,
+        "2016-05": 57,
+        "2016-06": 57,
+        "2016-07": 57,
+        "2016-08": 57,
+        "2016-09": 57,
+        "2016-10": 57,
+        "2016-11": 57,
+        "2016-12": 57
+      },
+      "housing_tax": {
+        "2016": 570
       }
     }
   }
